@@ -19,14 +19,17 @@ const PostCard = ({ post, onPostUpdated, onPostDeleted }) => {
 
   // Handle save
   const handleSave = () => {
-    fetch(`http://localhost:8001/api/posts/${post._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ content: newContent }),
-    })
+    fetch(
+      `https://chi-yawen-project3-backend.onrender.com/api/posts/${post._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ content: newContent }),
+      }
+    )
       .then((res) => res.json())
       .then((updatedPost) => {
         setIsEditing(false);
@@ -42,12 +45,15 @@ const PostCard = ({ post, onPostUpdated, onPostDeleted }) => {
   const handleDelete = () => {
     if (!window.confirm("Are you sure you want to delete this post?")) return;
 
-    fetch(`http://localhost:8001/api/posts/${post._id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    fetch(
+      `https://chi-yawen-project3-backend.onrender.com/api/posts/${post._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.ok) {
           onPostDeleted(post._id);

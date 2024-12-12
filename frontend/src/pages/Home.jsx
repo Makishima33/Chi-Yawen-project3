@@ -11,7 +11,7 @@ const Home = () => {
   useEffect(() => {
     const token = localStorage.getItem("jwtToken");
     setIsLoggedIn(!!token);
-    fetch("http://localhost:8001/api/posts")
+    fetch("https://chi-yawen-project3-backend.onrender.com/api/posts")
       .then((res) => res.json())
       .then((data) => {
         const normalizedPosts = data.map((post) => ({

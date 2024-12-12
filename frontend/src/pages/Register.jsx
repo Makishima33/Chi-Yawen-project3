@@ -12,11 +12,14 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    fetch("http://localhost:8001/api/users/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, password }),
-    })
+    fetch(
+      "https://chi-yawen-project3-backend.onrender.com/api/users/register",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.error) {
