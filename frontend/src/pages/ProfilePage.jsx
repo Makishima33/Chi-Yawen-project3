@@ -20,7 +20,7 @@ const ProfilePage = () => {
       return;
     }
 
-    fetch(`http://localhost:8001/api/users/${userId}`)
+    fetch(`https://chi-yawen-project3-backend.onrender.com/api/users/${userId}`)
       .then((res) => res.json())
       .then((data) => {
         setUser(data.user);
@@ -40,14 +40,17 @@ const ProfilePage = () => {
   const handleSaveDescription = () => {
     const token = localStorage.getItem("jwtToken");
 
-    fetch(`http://localhost:8001/api/users/${userId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ description }),
-    })
+    fetch(
+      `https://chi-yawen-project3-backend.onrender.com/api/users/${userId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ description }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         setDescription(data.description);

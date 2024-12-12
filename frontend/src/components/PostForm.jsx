@@ -9,7 +9,7 @@ const PostForm = ({ onPostCreated }) => {
     e.preventDefault();
     const token = localStorage.getItem("jwtToken");
 
-    fetch("http://localhost:8001/api/posts", {
+    fetch("https://chi-yawen-project3-backend.onrender.com/api/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
